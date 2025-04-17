@@ -16,15 +16,24 @@ class EIPAGES {
             pages[i] = reader.nextInt();
         }
         Arrays.sort(pages);
-
         int i = 0;
         while (i < n) {
-            int start = i;
 
+            int start = i;
             while (i + 1 < n && pages[i + 1] == pages[i] + 1) {
                 i++;
             }
+            int count = i - start + 1;
+            if (i >= 3) {
+                str.append(pages[start]).append("-").append(pages[i]).append(" ");
+            } else {
+                for (int j = start; j <= i; j++) {
+                    str.append(pages[i]).append(" ");
+                }
+            }
+            i++;
         }
+        System.out.print(str.toString().trim());
     }
 
     static class InputReader {
