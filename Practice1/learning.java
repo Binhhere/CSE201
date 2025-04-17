@@ -5,19 +5,19 @@ import java.io.*;
 
 class learning {
     static InputReader reader = new InputReader(System.in);
+    static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        int n = reader.nextInt();
-        int k = reader.nextInt();
-        int[] arr = new int[n];
+        String line1 = reader.next();
+        String line2 = reader.next();
+        int again = 0;
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = reader.nextInt();
+        for (int i = 0; i < Math.min(line1.length(), line2.length()); i++) {
+            if (line1.endsWith(line2.substring(0, i))) {
+                again = i;
+            }
         }
-        Arrays.sort(arr);
-        for (int i = n - 1; i >= n - k; i--) {
-            System.out.print(arr[i] + " ");
-        }
+        System.out.print(line1.length() + line2.length() - again);
     }
 
     static class InputReader {

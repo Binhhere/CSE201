@@ -13,8 +13,9 @@ class EIUTHU {
         int again = 0;
 
         for (int i = 1; i <= Math.min(line1.length(), line2.length()); i++) {
-            if (line1.endsWith(line2.substring(0, i)))
+            if (line1.endsWith(line2.substring(0, i))) {
                 again = i;
+            }
         }
         System.out.println(line1.length() + line2.length() - again);
     }

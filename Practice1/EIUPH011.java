@@ -1,3 +1,5 @@
+package Practice1;
+
 import java.util.*;
 import java.io.*;
 
@@ -7,22 +9,22 @@ class EIUPH011 {
     public static void main(String[] args) {
 
         int n = reader.nextInt();
-        int[] array = new int[n];
+        int[] arr = new int[n];
 
         for (int i = 0; i < n; i++) {
-            array[i] = reader.nextInt();
+            arr[i] = reader.nextInt();
         }
 
         for (int i = 0; i < n; i++) {
             boolean again = false;
-            for (int j = 0; j < i; j++) {
-                if (array[i] == array[j]) {
+            for (int j = i; j < i; j++) {
+                if (arr[i] == arr[j]) {
                     again = true;
                     break;
                 }
             }
             if (!again) {
-                System.out.print(array[i] + " ");
+                System.out.print(arr[i] + " ");
             }
         }
     }
