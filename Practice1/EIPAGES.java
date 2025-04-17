@@ -16,6 +16,7 @@ class EIPAGES {
             pages[i] = reader.nextInt();
         }
         Arrays.sort(pages);
+
         int i = 0;
         while (i < n) {
 
@@ -24,16 +25,16 @@ class EIPAGES {
                 i++;
             }
             int count = i - start + 1;
-            if (i >= 3) {
+            if (count >= 3) {
                 str.append(pages[start]).append("-").append(pages[i]).append(" ");
             } else {
                 for (int j = start; j <= i; j++) {
-                    str.append(pages[i]).append(" ");
+                    str.append(pages[j]).append(" ");
                 }
             }
             i++;
         }
-        System.out.print(str.toString().trim());
+        System.out.println(str.toString().trim());
     }
 
     static class InputReader {

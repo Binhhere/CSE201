@@ -8,16 +8,33 @@ class learning {
     static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        String line1 = reader.next();
-        String line2 = reader.next();
-        int again = 0;
 
-        for (int i = 0; i < Math.min(line1.length(), line2.length()); i++) {
-            if (line1.endsWith(line2.substring(0, i))) {
-                again = i;
-            }
+        int n = reader.nextInt();
+        int[] pages = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            pages[i] = reader.nextInt();
         }
-        System.out.print(line1.length() + line2.length() - again);
+        Arrays.sort(pages);
+
+        int i = 0;
+        while (i < n) {
+
+            int start = i;
+            while (i + 1 < n && pages[i + 1] == pages[i] + 1) {
+                i++;
+            }
+            int count = i - start + 1;
+            if (count >= 3) {
+                str.append(pages[start]).append("-").append(pages[i]).append(" ");
+            } else {
+                for (int j = start; j <= i; j++) {
+                    str.append(pages[j]).append(" ");
+                }
+            }
+            i++;
+        }
+        System.out.println(str.toString().trim());
     }
 
     static class InputReader {
