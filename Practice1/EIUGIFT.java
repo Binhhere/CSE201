@@ -1,32 +1,13 @@
 import java.io.*;
 import java.util.*;
 
-public class learning {
+class EIUGIFT {
     static InputReader reader = new InputReader(System.in);
     static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        while (true) {
-            int n = reader.nextInt();
-            if (n == 0)
-                break;
-
-            int[] num = new int[n];
-            for (int i = 0; i < n; i++) {
-                num[i] = reader.nextInt();
-
-                int count = 0;
-                if (count <= 1000) {
-                    if (allEqual(num)) {
-                        str.append(count).append("\n");
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    static boolean allEqual(int[] num) {
+        int n = reader.nextInt();
+        int m = reader.nextInt();
 
     }
 

@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class learning {
+public class EIUPH014 {
     static InputReader reader = new InputReader(System.in);
     static StringBuilder str = new StringBuilder();
 
@@ -12,22 +12,40 @@ public class learning {
                 break;
 
             int[] num = new int[n];
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++)
                 num[i] = reader.nextInt();
 
-                int count = 0;
-                if (count <= 1000) {
-                    if (allEqual(num)) {
-                        str.append(count).append("\n");
-                        break;
-                    }
+            int count = 0;
+            while (count <= 1000) {
+                if (allEqual(num)) {
+                    str.append(count).append("\n");
+                    break;
                 }
+
+                int[] next = new int[n];
+                for (int i = 0; i < n - 1; i++) {
+                    next[i] = Math.abs(num[i] - num[i + 1]);
+                }
+                next[n - 1] = Math.abs(num[n - 1] - num[0]);
+
+                num = next;
+                count++;
+            }
+
+            if (count > 1000) {
+                str.append("-1\n");
             }
         }
+
+        System.out.print(str);
     }
 
     static boolean allEqual(int[] num) {
-
+        for (int i = 1; i < num.length; i++) {
+            if (num[i] != num[0])
+                return false;
+        }
+        return true;
     }
 
     static class InputReader {

@@ -1,35 +1,30 @@
 import java.io.*;
 import java.util.*;
 
-public class learning {
+public class EIUPH010 {
     static InputReader reader = new InputReader(System.in);
-    static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        while (true) {
-            int n = reader.nextInt();
-            if (n == 0)
-                break;
+        int n = reader.nextInt();
+        int[] count = new int[1000000]; // đếm tần suất
+        int maxFreq = 0;
+        int minNum = 0;
 
-            int[] num = new int[n];
-            for (int i = 0; i < n; i++) {
-                num[i] = reader.nextInt();
-
-                int count = 0;
-                if (count <= 1000) {
-                    if (allEqual(num)) {
-                        str.append(count).append("\n");
-                        break;
-                    }
-                }
+        for (int i = 0; i < n; i++) {
+            int x = reader.nextInt();
+            count[x]++;
+            if (count[x] > maxFreq) {
+                maxFreq = count[x];
+                minNum = x;
+            } else if (count[x] == maxFreq && x < minNum) {
+                minNum = x;
             }
         }
+
+        System.out.println(minNum + " " + maxFreq);
     }
 
-    static boolean allEqual(int[] num) {
-
-    }
-
+    // Bộ đọc input quen thuộc
     static class InputReader {
         StringTokenizer tokenizer;
         BufferedReader reader;
@@ -59,8 +54,7 @@ public class learning {
                     } else {
                         tokenizer = new StringTokenizer(reader.readLine());
                     }
-                } catch (IOException e) {
-                }
+                } catch (IOException e) {}
             }
             return tokenizer.nextToken();
         }

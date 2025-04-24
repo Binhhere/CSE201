@@ -1,5 +1,3 @@
-package Practice1;
-
 import java.io.*;
 import java.util.*;
 
@@ -8,7 +6,6 @@ class EIPAGES {
     static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-
         int n = reader.nextInt();
         int[] pages = new int[n];
 
@@ -18,8 +15,8 @@ class EIPAGES {
         Arrays.sort(pages);
 
         int i = 0;
-        while (i < n) {
 
+        while (i < n) {
             int start = i;
             while (i + 1 < n && pages[i + 1] == pages[i] + 1) {
                 i++;

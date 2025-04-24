@@ -1,33 +1,43 @@
 import java.io.*;
 import java.util.*;
 
-public class learning {
+class EIUGIFT1 {
     static InputReader reader = new InputReader(System.in);
     static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        while (true) {
-            int n = reader.nextInt();
-            if (n == 0)
-                break;
+        int n = reader.nextInt();
+        int m = reader.nextInt();
 
-            int[] num = new int[n];
-            for (int i = 0; i < n; i++) {
-                num[i] = reader.nextInt();
+        int[] prizes = new int[n];
+        for (int i = 0; i < n; i++) {
+            prizes[i] = reader.nextInt();
+        }
+        Arrays.sort(prizes);
 
-                int count = 0;
-                if (count <= 1000) {
-                    if (allEqual(num)) {
-                        str.append(count).append("\n");
-                        break;
-                    }
+        int[] wrapping = new int[m];
+        for (int i = 0; i < m; i++) {
+            wrapping[i] = reader.nextInt();
+        }
+        Arrays.sort(wrapping);
+
+        int i = 0;
+        int j = 0;
+        int wrapped = 0;
+        while (i < n && j < m) {
+            if (wrapping[j] < prizes[i] * 2) {
+                j++;
+            } else {
+                if (wrapping[j] > prizes[i] * 3) {
+                    i++;
+                } else {
+                    i++;
+                    j++;
+                    wrapped++;
                 }
             }
         }
-    }
-
-    static boolean allEqual(int[] num) {
-
+        System.out.print(wrapped);
     }
 
     static class InputReader {

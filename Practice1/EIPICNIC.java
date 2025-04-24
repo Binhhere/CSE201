@@ -1,33 +1,41 @@
 import java.io.*;
 import java.util.*;
 
-public class learning {
+public class EIPICNIC {
     static InputReader reader = new InputReader(System.in);
-    static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
-        while (true) {
-            int n = reader.nextInt();
-            if (n == 0)
-                break;
+        int n = reader.nextInt();
+        int[] count = new int[5]; // count[1] = nhóm 1 người, ..., count[4] = nhóm 4 người
 
-            int[] num = new int[n];
-            for (int i = 0; i < n; i++) {
-                num[i] = reader.nextInt();
-
-                int count = 0;
-                if (count <= 1000) {
-                    if (allEqual(num)) {
-                        str.append(count).append("\n");
-                        break;
-                    }
-                }
-            }
+        for (int i = 0; i < n; i++) {
+            int groupSize = reader.nextInt();
+            count[groupSize]++;
         }
-    }
 
-    static boolean allEqual(int[] num) {
+        int cars = count[4]; // nhóm 4 người → 1 xe/nhóm
 
+        // nhóm 3 người ghép với 1 người nếu có
+        int min31 = Math.min(count[3], count[1]);
+        cars += count[3];
+        count[1] -= min31;
+
+        // nhóm 2 người → 2 nhóm = 1 xe
+        cars += count[2] / 2;
+        count[2] = count[2] % 2;
+
+        // nếu còn 1 nhóm 2 người → cần thêm 1 xe
+        if (count[2] == 1) {
+            cars += 1;
+            count[1] -= Math.min(2, count[1]);
+        }
+
+        // nhóm 1 người còn lại → 4 người / xe
+        if (count[1] > 0) {
+            cars += (count[1] + 3) / 4;
+        }
+
+        System.out.println(cars);
     }
 
     static class InputReader {
@@ -59,8 +67,7 @@ public class learning {
                     } else {
                         tokenizer = new StringTokenizer(reader.readLine());
                     }
-                } catch (IOException e) {
-                }
+                } catch (IOException e) {}
             }
             return tokenizer.nextToken();
         }
