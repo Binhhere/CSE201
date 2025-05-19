@@ -1,0 +1,19 @@
+3: 5 4
+tasks
+tasks.sort()
+
+persons = new[0,0,0...]
+for( i =tasks.length-1=>)
+	task = tasks[i]
+	minIndex = findMinIndexOfPerson(...)
+	persons[minIndex]+=task
+
+class Person {index, load}
+
+PriorityQueue<Person> pq = new PriorityQueue<>(p1,p2)->{
+					var compare = p1.load -p2.load
+					if(compare == 0 ) compare = p1.index = p2.index
+					return compare;
+		})
+persons = new Person[n];
+for all person in person => 

@@ -1,9 +1,8 @@
-package Practice1;
-
-import java.util.*;
 import java.io.*;
+import java.util.*;
 
 class EIUPH011 {
+
     static InputReader reader = new InputReader(System.in);
 
     public static void main(String[] args) {
@@ -17,7 +16,7 @@ class EIUPH011 {
 
         for (int i = 0; i < n; i++) {
             boolean again = false;
-            for (int j = i; j < i; j++) {
+            for (int j = 0; j < i; j++) {
                 if (arr[i] == arr[j]) {
                     again = true;
                     break;

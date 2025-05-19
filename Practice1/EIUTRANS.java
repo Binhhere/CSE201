@@ -1,13 +1,20 @@
 import java.io.*;
 import java.util.*;
 
-class learning {
+class EIUTRANS {
+
     static InputReader reader = new InputReader(System.in);
-    static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
         int n = reader.nextInt();
+        int m = reader.nextInt();
 
+        Map<String, String> tuDien = new HashMap<>();
+
+        for (int i = 0; i < m; i++) {
+            String word = reader.next();
+
+        }
     }
 
     static class InputReader {

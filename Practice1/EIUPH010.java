@@ -6,7 +6,7 @@ public class EIUPH010 {
 
     public static void main(String[] args) {
         int n = reader.nextInt();
-        int[] count = new int[1000000]; // đếm tần suất
+        int[] count = new int[1000000];
         int maxFreq = 0;
         int minNum = 0;
 
@@ -23,8 +23,6 @@ public class EIUPH010 {
 
         System.out.println(minNum + " " + maxFreq);
     }
-
-    // Bộ đọc input quen thuộc
     static class InputReader {
         StringTokenizer tokenizer;
         BufferedReader reader;

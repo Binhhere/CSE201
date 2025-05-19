@@ -7,8 +7,38 @@ class EIUGIFT {
 
     public static void main(String[] args) {
         int n = reader.nextInt();
-        int m = reader.nextInt();
+        int k = reader.nextInt();
 
+        int[] prices = new int[n];
+        for (int i = 0; i < n; i++) {
+            prices[i] = reader.nextInt();
+        }
+        Arrays.sort(prices);
+
+        int i = 0, j = n - 1;
+        int tongMax = -1;
+        int hieuMin = 1511300503;
+
+        while (i < j) {
+            int tong = prices[i] + prices[j];
+
+            if (tong > k) {
+                j--;
+            } else {
+                int hieu = Math.abs(prices[i] - prices[j]);
+
+                if (tong > tongMax || tong == tongMax && hieu < hieuMin) {
+                    tongMax = tong;
+                    hieuMin = hieu;
+                }
+                i++;
+            }
+        }
+        if (tongMax == -1) {
+            System.out.println("-1 -1");
+        } else {
+            System.out.println(tongMax + " " + hieuMin);
+        }
     }
 
     static class InputReader {

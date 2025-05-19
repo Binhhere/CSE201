@@ -1,13 +1,51 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
-class learning {
+class EIUSLS {
+
     static InputReader reader = new InputReader(System.in);
-    static StringBuilder str = new StringBuilder();
 
     public static void main(String[] args) {
         int n = reader.nextInt();
+        List<Student> students = new ArrayList<>();
+        
+        for (int i = 0; i < n; i++) {
+            String name = reader.next();
+            int numCourses = reader.nextInt();
+            int totalScore = 0;
+            for (int j = 0; j < numCourses; j++) {
+                totalScore += reader.nextInt();
+            }
+            double averageScore = (double) totalScore / numCourses;
+            students.add(new Student(name, averageScore, i));
+        }
 
+        Collections.sort(students);
+
+        for (int i = 0; i < Math.min(2, students.size()); i++) {
+            System.out.println(students.get(i).name);
+        }
+    }
+
+    static class Student implements Comparable<Student> {
+        String name;
+        double averageScore;
+        int index;
+
+        public Student(String name, double averageScore, int index) {
+            this.name = name;
+            this.averageScore = averageScore;
+            this.index = index;
+        }
+
+        @Override
+        public int compareTo(Student other) {
+            if (Double.compare(other.averageScore, this.averageScore) != 0) {
+                return Double.compare(other.averageScore, this.averageScore);
+            } else {
+                return Integer.compare(this.index, other.index);
+            }
+        }
     }
 
     static class InputReader {
